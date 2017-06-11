@@ -1,0 +1,25 @@
+.wrapper-main {
+    margin-top: 100px;
+}
+.category-menu{
+    width:100%;
+}
+.form-control.search {
+    border-radius: 10px;
+    margin-top:8px;
+}
+.author{
+    font-style: italic;
+    color: #333;
+    min-height: 80px;
+}
+
+.product-card{
+    min-height: 120px;
+}
+
+.price {
+    color: green;
+    font-size: 24px;
+    font-weight: bold;
+}

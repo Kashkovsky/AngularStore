@@ -1,0 +1,51 @@
+<div class="container-fluid">
+    <div class="row-fluid">
+        <div class="span8">
+            <table class="table table-bordered">
+                <tr class="well">
+                    <td><b>Item</b></td>
+                    <td class="text-center"><b>Quantity</b></td>
+                    <td class="text-right"><b>Price</b></td>
+                    <td />
+                </tr>
+                <tr ng-hide="basket.getTotalCount() > 0">
+                    <td class="text-center" colspan="4">
+                        Your cart is empty.
+                    </td>
+                </tr>
+
+                <!-- cart items -->
+                <tr ng-repeat="item in basket.items | orderBy:'name'">
+                    <td>{{item.name}}</td>
+                    <td class="text-center">
+                        <div class="input-append">
+                            <input class="span3 text-center" type="tel" ng-model="item.quantity" ng-change="basket.saveItems()" />
+                            <button class="btn btn-success" type="button" ng-disabled="item.quantity >= 1000" ng-click="basket.addItem(item.id, item.name, item.price, +1)">+</button>
+                            <button class="btn btn-inverse" type="button" ng-disabled="item.quantity <= 1" ng-click="basket.addItem(item.id, item.name, item.price, -1)">-</button>
+                        </div>
+                    </td>
+                    <td class="text-right">{{item.price * item.quantity | currency}}</td>
+                    <td class="text-center" title="remove from cart">
+                        <a href="" ng-click="basket.addItem(item.id, item.name, item.price, -10000000)">
+                            <button type="button" class="btn btn-danger">Remove</button>
+                        </a>
+                    </td>
+                </tr>
+
+                <!-- footer -->
+                <tr class="well">
+                    <td><b>Total</b></td>
+                    <td class="text-center"><b>{{basket.getTotalCount()}}</b></td>
+                    <td class="text-right"><b>{{basket.getTotalPrice() | currency}}</b></td>
+                    <td />
+                </tr>
+            </table>
+        </div>
+
+        <!-- buttons -->
+        <div class="well">
+            <button class="btn btn-default" type="button" onclick="window.location.href='/'">Back to store</button>
+            <button class="btn btn-danger" type="button" ng-click="basket.clearItems()" ng-disabled="basket.getTotalCount() < 1">Clear cart</button>
+        </div>
+    </div>
+</div>

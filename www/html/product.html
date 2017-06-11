@@ -1,0 +1,15 @@
+<div class="row">
+    <div class="col-sm-4">
+        <img class="img-responsive" src="/img/{{product.id}}.jpg" alt="{{product.name}}" onerror="this.src='img/placeholder.gif'">
+    </div>
+    <div class="col-sm-8">
+        <div class="price pull-right">${{product.price}}</div>
+        <div class="author">By: {{product.author}}</div>
+        <div class="description" ng-bind="product.description"></div>
+        <hr/>
+        <a ng-href="/">
+            <button type="button" class="btn btn-default" ng-href="/">Back</button>
+        </a>
+        <button type="button" class="btn btn-default"  ng-click="basket.addItem(product.id, product.name, product.price, 1)">Add to cart</button>
+    </div>
+</div>

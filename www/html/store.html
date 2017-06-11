@@ -1,0 +1,41 @@
+<div class="col-md-3 visible-md visible-lg">
+    <div class="btn-group-vertical category-menu">
+        <a class="btn" ng-class="selectedCategory === category ? 'btn-info': 'btn-default'" role="button" ng-click="categoryChanged()">All</a>
+        <a class="btn" ng-class="selectedCategory === category ? 'btn-info': 'btn-default'" role="button" ng-repeat="category in categories"
+            ng-bind="category" ng-click="categoryChanged(category)"></a>
+    </div>
+</div>
+<div class="col-sm-12 visible-sm visible-xs">
+    <div class="btn-group category-menu">
+        <a class="btn" ng-class="selectedCategory === category ? 'btn-info': 'btn-default'" role="button" ng-click="categoryChanged()">All</a>
+        <a class="btn" ng-class="selectedCategory === category ? 'btn-info': 'btn-default'" role="button" ng-repeat="category in categories"
+            ng-bind="category" ng-click="categoryChanged(category)"></a>
+    </div>
+    <hr/>
+</div>
+<div class="col-sm-12 col-md-9">
+    <div class="row">
+        <div class="col-sm-4" ng-repeat="product in products | orderBy:'name' | filter:search">
+            <div class="panel panel-default">
+                <div class="panel-heading" ng-bind="product.name"></div>
+                <div class="panel-body">
+                    <div class="row product-card">
+                        <div class="col-sm-6">
+                            <img class="img-responsive" src="img/{{product.id}}.jpg" alt="{{product.name}}" onerror="this.src='img/placeholder.gif'">
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="author">By: {{product.author}}</div>
+                            <div class="price">${{product.price}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <a ng-href="/#!/products/{{product.id}}" ng-click="setProduct(product)">
+                            <button type="button" class="btn btn-default">Details</button>
+                        </a>
+                    <button type="button" class="btn btn-default" ng-click="basket.addItem(product.id, product.name, product.price, 1)">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

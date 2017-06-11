@@ -1,0 +1,23 @@
+{
+  "name": "teststore",
+  "description": "Client-side part of web store app",
+  "main": "gulpfile.js",
+  "authors": [
+    "Denis Kashkovsky"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "latest",
+    "angular-route": "latest",
+    "bootstrap": "latest"
+  }
+}
